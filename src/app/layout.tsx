@@ -1,3 +1,4 @@
+import Container from '@/components/layout/container';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
@@ -19,7 +20,9 @@ type Props = {
 const RootLayout: React.FC<Props> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={`h-screen flex flex-col ${roboto.className}`}>
+        <Container>{children}</Container>
+      </body>
     </html>
   );
 };
