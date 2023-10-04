@@ -1,7 +1,7 @@
 // function for manage query params
 
-import { useRouter } from "next/navigation";
-import { useGetFilter } from "./useGetFilter";
+import { useRouter } from 'next/navigation';
+import { useGetFilter } from './useGetFilter';
 
 export const useSetQueryParams = () => {
   const router = useRouter();
@@ -9,8 +9,8 @@ export const useSetQueryParams = () => {
 
   const setQueryParams = ({
     title = filter.title,
-    genre = "",
-    country = "",
+    genre = '',
+    country = '',
     year_start = filter.year_start,
     year_end = filter.year_end,
     page = filter.page,
@@ -18,11 +18,11 @@ export const useSetQueryParams = () => {
     const queryParams = new URLSearchParams();
 
     // title
-    queryParams.set("title", title);
+    queryParams.set('title', title);
 
     // genres
     let genres = filter.genre;
-    if (genre !== "") {
+    if (genre !== '') {
       if (genres.includes(genre)) {
         genres = genres.filter((item) => item !== genre);
       } else {
@@ -32,13 +32,13 @@ export const useSetQueryParams = () => {
 
     if (genres.length > 0) {
       genres.forEach((genre) => {
-        queryParams.append("genre[]", genre);
+        queryParams.append('genre[]', genre);
       });
     }
 
     // countries
     let countries = filter.country;
-    if (country !== "") {
+    if (country !== '') {
       if (countries.includes(country)) {
         countries = countries.filter((item) => item !== country);
       } else {
@@ -48,25 +48,24 @@ export const useSetQueryParams = () => {
 
     if (countries.length > 0) {
       countries.forEach((country) => {
-        queryParams.append("country[]", country);
+        queryParams.append('country[]', country);
       });
     }
 
-    console.log(year_start);
     // year_start
-    if (year_start !== null && year_start !== "") {
-      queryParams.set("year_start", year_start);
+    if (year_start !== null && year_start !== '') {
+      queryParams.set('year_start', year_start);
     }
 
     // year_end
-    if (year_end !== null && year_end !== "") {
-      queryParams.set("year_end", year_end);
+    if (year_end !== null && year_end !== '') {
+      queryParams.set('year_end', year_end);
     }
 
     // page
-    queryParams.set("page", page);
+    queryParams.set('page', page);
 
-    router.push("?" + queryParams.toString());
+    router.push('?' + queryParams.toString());
   };
 
   return setQueryParams;
