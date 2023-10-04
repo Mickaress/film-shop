@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Providers from '@/components/Providers';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -25,10 +26,12 @@ const RootLayout: React.FC<Props> = ({ children }) => {
   return (
     <html lang="en">
       <body className={`h-screen flex flex-col ${roboto.className}`}>
-        <Header />
-        <Container>{children}</Container>
-        <Footer />
-        <ToastContainer />
+        <Providers>
+          <Header />
+          <Container>{children}</Container>
+          <Footer />
+          <ToastContainer />
+        </Providers>
       </body>
     </html>
   );
