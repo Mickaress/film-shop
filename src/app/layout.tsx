@@ -1,4 +1,4 @@
-import Container from '@/components/layout/container';
+import Container from '@/components/layout/Container';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
