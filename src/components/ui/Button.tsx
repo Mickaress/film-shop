@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-type Props = {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: 'text' | 'contained';
   href?: string;
   children: React.ReactNode;
@@ -15,6 +15,7 @@ const Button: React.FC<Props> = ({
   children,
   className,
   onClick,
+  ...props
 }) => {
   const classNameMapper = {
     text: 'hover:text-blue hover:underline',
@@ -33,6 +34,7 @@ const Button: React.FC<Props> = ({
     <button
       onClick={onClick}
       className={`${classNameMapper[variant]} ${className}`}
+      {...props}
     >
       {children}
     </button>
