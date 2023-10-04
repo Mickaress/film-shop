@@ -20,7 +20,7 @@ const Button: React.FC<Props> = ({
   const classNameMapper = {
     text: 'hover:text-blue hover:underline',
     contained:
-      'text-white py-2 px-5 bg-blue border border-blue hover:text-blue hover: bg-white',
+      'text-white py-2 px-5 bg-blue border border-blue rounded-lg hover:text-blue hover:bg-white',
   };
 
   if (href) {
