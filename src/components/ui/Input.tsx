@@ -10,10 +10,10 @@ const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(
     const classNameMapper = {
       text: 'w-full text-lg bg-gray rounded-lg outline-none p-2',
       number:
-        'w-[120px] h-[23px] text-lg bg-dark_gray text-white outline-none text-center rounded-full',
+        'w-[110px] h-[23px] text-sm bg-darkgray text-white outline-none text-center rounded-full',
     };
     return (
-      <div className="w-full">
+      <div className="">
         <input
           {...props}
           ref={ref}
