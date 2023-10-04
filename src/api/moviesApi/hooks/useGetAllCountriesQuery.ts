@@ -1,9 +1,9 @@
-import { MovieCountry } from '@/models/Movie';
+import { MovieCountryType } from '@/models/Movie';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCountries } from '..';
 
 export const useGetAllCountriesQuery = () => {
-  return useQuery<MovieCountry[]>({
+  return useQuery<MovieCountryType[]>({
     queryKey: ['genres'],
     queryFn: () => getAllCountries(),
   });
