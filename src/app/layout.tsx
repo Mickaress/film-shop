@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/footer';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
       <body className={`h-screen flex flex-col ${roboto.className}`}>
         <Header />
         <Container>{children}</Container>
+        <Footer />
       </body>
     </html>
   );
