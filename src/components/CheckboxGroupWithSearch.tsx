@@ -3,10 +3,10 @@ import { FC, useState } from 'react';
 import Input from './ui/Input';
 import Checkbox from './ui/Checkbox';
 import { useGetFilter } from '@/hooks/useGetFilter';
-import { MovieGenre, MovieCountry } from '@/models/Movie';
+import { MovieGenreType, MovieCountryType } from '@/models/Movie';
 
 interface Props {
-  data?: MovieGenre[] | MovieCountry[];
+  data?: MovieGenreType[] | MovieCountryType[];
   onChange: (id: number) => void;
 }
 
