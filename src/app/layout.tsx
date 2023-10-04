@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -26,6 +28,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
         <Header />
         <Container>{children}</Container>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   );
