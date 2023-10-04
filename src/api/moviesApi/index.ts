@@ -8,3 +8,12 @@ export const getAllGenres = async () => {
     throw 'Непредвиденная ошибка';
   }
 };
+
+export const getAllCountries = async () => {
+  try {
+    const response = await axios.get('api/movies/countries');
+    return response.data;
+  } catch (error) {
+    throw 'Непредвиденная ошибка';
+  }
+};
