@@ -1,6 +1,5 @@
 'use client';
 import { signOut } from 'next-auth/react';
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Button from './ui/Button';
