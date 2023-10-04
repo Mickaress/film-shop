@@ -4,9 +4,16 @@
 
 @layer base {
   * {
-    @apply text-darkgray text-[20px] outline-none box-border leading-none;
+    @apply text-darkgray text-[20px] outline-none box-border leading-none duration-300;
   }
   body {
     @apply bg-gray;
+  }
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
   }
 }
