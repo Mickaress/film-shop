@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { SignUpType, signUpSchema } from '@/utils/zodSchemas';
+import { useSignUpMutation } from '@/api/userApi/hooks/useSignUpMutation';
 
 const SignUpForm = () => {
   const schema = signUpSchema;
@@ -15,8 +16,10 @@ const SignUpForm = () => {
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
+  const { mutate: signUp } = useSignUpMutation();
+
   const onSubmit = async (data: SignUpType) => {
-    console.log(data);
+    signUp(data);
   };
 
   return (
