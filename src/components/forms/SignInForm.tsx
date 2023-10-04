@@ -5,8 +5,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { signInSchema, SignInType } from '@/utils/zodSchemas';
+import { toast } from 'react-toastify';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const SignInForm = () => {
+  const router = useRouter();
   const schema = signInSchema;
   const form = useForm<SignInType>({
     resolver: zodResolver(schema),
@@ -16,7 +20,16 @@ const SignInForm = () => {
   const { errors } = formState;
 
   const onSubmit = async (data: SignInType) => {
-    console.log(data);
+    const signInData = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
+    if (signInData?.error) {
+      toast.error(signInData.error);
+    } else {
+      router.replace('/');
+    }
   };
 
   return (
