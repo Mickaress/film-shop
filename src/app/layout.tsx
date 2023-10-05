@@ -28,7 +28,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
       <body className={`h-screen flex flex-col ${roboto.className}`}>
         <Providers>
           <Header />
-          <Container>{children}</Container>
+          <Container className="mb-auto">{children}</Container>
           <Footer />
           <ToastContainer />
         </Providers>

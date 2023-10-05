@@ -7,9 +7,7 @@ type Props = {
 
 const Container: React.FC<Props> = ({ children, className }) => {
   return (
-    <section
-      className={`max-w-[1400px] w-full mx-auto px-4 h-full ${className}`}
-    >
+    <section className={`max-w-[1400px] w-full mx-auto px-4 ${className}`}>
       {children}
     </section>
   );
