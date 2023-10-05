@@ -35,7 +35,7 @@ const Pagination: FC<Props> = ({ pages, currentPage }) => {
   if (pages < 2) return;
 
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-8 items-center mt-5">
       <ChevronLeft onClick={() => handlePageChange(currentPage - 1)} />
       <div className="flex">{pagination}</div>
       <ChevronRight onClick={() => handlePageChange(currentPage + 1)} />
