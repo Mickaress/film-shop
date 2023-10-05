@@ -1,5 +1,5 @@
 import MoviesList from '@/components/MoviesList';
-import Sidebar from '@/components/layout/Sidebar';
+import Sidebar from '@/components/Sidebar';
 
 const Home = () => {
   return (
