@@ -1,29 +1,29 @@
-'use client';
-import { FC, useState } from 'react';
-import Input from './ui/Input';
-import Checkbox from './ui/Checkbox';
-import { useGetFilter } from '@/hooks/useGetFilter';
-import { MovieGenreType, MovieCountryType } from '@/models/Movie';
+import React, { useState } from 'react';
+import Input from './Input';
+import Checkbox from './Checkbox';
+import Button from './Button';
 
-interface Props {
-  data?: MovieGenreType[] | MovieCountryType[];
-  onChange: (id: number) => void;
-}
+type Props = {
+  list: { id: number; name: string }[] | undefined;
+  checkedList: string[];
+  handleChange: (id: number) => void;
+};
 
-const CheckboxGroupWithSearch: FC<Props> = ({ data, onChange }) => {
+const CheckboxGroupWithSearch: React.FC<Props> = ({
+  list,
+  checkedList,
+  handleChange,
+}) => {
   const [search, setSearch] = useState('');
   const [showAll, setShowAll] = useState(false);
 
-  const filteredCheckbox = data?.filter((item) =>
+  const filteredCheckbox = list?.filter((item) =>
     item.name.toLowerCase().startsWith(search.toLowerCase()),
   );
 
   const checkboxToShow = showAll
     ? filteredCheckbox
     : filteredCheckbox?.slice(0, 4);
-
-  const filter = useGetFilter();
-  const checkedList = filter.genre;
 
   return (
     <div>
@@ -38,14 +38,18 @@ const CheckboxGroupWithSearch: FC<Props> = ({ data, onChange }) => {
             key={item.id}
             name={item.name}
             checked={checkedList.includes(item.id.toString())}
-            onChange={() => onChange(item.id)}
+            onChange={() => handleChange(item.id)}
           />
         ))}
       </div>
       {filteredCheckbox && filteredCheckbox?.length > 4 && (
-        <button onClick={() => setShowAll(!showAll)}>
+        <Button
+          variant="text"
+          className="text-[16px]"
+          onClick={() => setShowAll(!showAll)}
+        >
           {showAll ? 'Скрыть \u25B2' : 'Показать все \u25BC'}
-        </button>
+        </Button>
       )}
     </div>
   );
