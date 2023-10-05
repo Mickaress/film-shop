@@ -5,7 +5,7 @@ import { useGetAllGenresQuery } from '@/api/moviesApi/hooks/useGetAllGenresQuery
 import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 import CheckboxGroupWithSearch from './ui/CheckboxGroupWithSearch';
 
-const GenreCheckboxGroup = () => {
+const GenreFilter = () => {
   const { data: genreList } = useGetAllGenresQuery();
 
   const filter = useGetFilter();
@@ -25,4 +25,4 @@ const GenreCheckboxGroup = () => {
   );
 };
 
-export default GenreCheckboxGroup;
+export default GenreFilter;

@@ -5,7 +5,7 @@ import { useGetAllCountriesQuery } from '@/api/moviesApi/hooks/useGetAllCountrie
 import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 import CheckboxGroupWithSearch from './ui/CheckboxGroupWithSearch';
 
-const CountryCheckboxGroup = () => {
+const CountryFilter = () => {
   const { data: countryList } = useGetAllCountriesQuery();
 
   const filter = useGetFilter();
@@ -25,4 +25,4 @@ const CountryCheckboxGroup = () => {
   );
 };
 
-export default CountryCheckboxGroup;
+export default CountryFilter;
