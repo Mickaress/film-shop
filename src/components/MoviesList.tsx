@@ -1,19 +1,14 @@
 'use client';
 import Pagination from './Pagination';
-import { useQuery } from '@tanstack/react-query';
 import { useGetFilter } from '@/hooks/useGetFilter';
-import { MoviesListType } from '@/models/Movie';
-import { getFilteredFilms } from '@/api/moviesApi';
 import MoviesListItem from './MoviesListItem';
 import { ClipLoader } from 'react-spinners';
+import { useGetFilteredMoviesQuery } from '@/api/moviesApi/hooks/useGetFilteredMoviesQuery';
 
 const MoviesList = () => {
   const filter = useGetFilter();
 
-  const { data, isLoading } = useQuery<MoviesListType>({
-    queryKey: ['films', filter],
-    queryFn: () => getFilteredFilms(filter),
-  });
+  const { data, isLoading } = useGetFilteredMoviesQuery(filter);
 
   const movies = data?.movies;
   const pages = data ? Math.ceil(data.count / 18) : 1;
@@ -21,24 +16,24 @@ const MoviesList = () => {
 
   if (isLoading)
     return (
-      <>
+      <div className="bg-white rounded-lg p-5 w-full flex justify-center">
         <ClipLoader size={48} />
-      </>
+      </div>
     );
 
   return (
-    <>
-      <div className="flex flex-wrap justify-between gap-3">
-        {movies?.length === 0 ? (
-          <p className="text-[48px]">Нет данных</p>
-        ) : (
+    <div className="bg-white rounded-lg p-5 w-full flex flex-col items-center">
+      <div className="flex flex-wrap gap-3 justify-center">
+        {movies?.length !== 0 ? (
           movies?.map((movie) => (
             <MoviesListItem id={movie.id} key={movie.id} title={movie.title} />
           ))
+        ) : (
+          <p className="text-[48px]">Фильмы не найдены</p>
         )}
       </div>
       <Pagination pages={pages} currentPage={currentPage} />
-    </>
+    </div>
   );
 };
 
