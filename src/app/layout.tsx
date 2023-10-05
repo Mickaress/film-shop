@@ -1,12 +1,13 @@
-import Container from '@/components/layout/Container';
+import Container from '@/components/Container';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Providers from '@/components/Providers';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const roboto = Roboto({
   subsets: ['latin'],
