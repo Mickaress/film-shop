@@ -29,6 +29,7 @@ const CheckboxGroupWithSearch: FC<Props> = ({ data, onChange }) => {
     <div>
       <Input
         variant="text"
+        placeholder="Поиск..."
         onChange={(event) => setSearch(event.target.value)}
       />
       <div className="my-2">
