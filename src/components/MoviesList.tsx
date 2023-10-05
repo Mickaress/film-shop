@@ -5,6 +5,7 @@ import { useGetFilter } from '@/hooks/useGetFilter';
 import { MoviesListType } from '@/models/Movie';
 import { getFilteredFilms } from '@/api/moviesApi';
 import MoviesListItem from './MoviesListItem';
+import { ClipLoader } from 'react-spinners';
 
 const MoviesList = () => {
   const filter = useGetFilter();
@@ -18,17 +19,26 @@ const MoviesList = () => {
   const pages = data ? Math.ceil(data.count / 18) : 1;
   const currentPage = parseInt(filter.page);
 
-  if (isLoading) return <>Загрузка</>;
+  if (isLoading)
+    return (
+      <>
+        <ClipLoader size={48} />
+      </>
+    );
 
   return (
-    <div className="bg-white max-w-5xl w-full rounded-lg p-5 flex flex-col items-center">
+    <>
       <div className="flex flex-wrap justify-between gap-3">
-        {movies?.map((movie) => (
-          <MoviesListItem id={movie.id} key={movie.id} title={movie.title} />
-        ))}
+        {movies?.length === 0 ? (
+          <p className="text-[48px]">Нет данных</p>
+        ) : (
+          movies?.map((movie) => (
+            <MoviesListItem id={movie.id} key={movie.id} title={movie.title} />
+          ))
+        )}
       </div>
       <Pagination pages={pages} currentPage={currentPage} />
-    </div>
+    </>
   );
 };
 

@@ -32,10 +32,11 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-[300px] bg-white rounded-lg p-5">
+    <>
       <p className="text-base bold font-bold">Название</p>
       <Input
         variant="text"
+        placeholder="Поиск..."
         onChange={(event) => handleChangeTitle(event.target.value)}
       />
       <p className="text-base bold font-bold mt-5">Жанр</p>
@@ -56,6 +57,6 @@ export default function Sidebar() {
           onChange={(event) => handleChangeMaxYear(event.target.value)}
         />
       </div>
-    </aside>
+    </>
   );
 }
