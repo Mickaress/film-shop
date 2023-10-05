@@ -3,13 +3,13 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const response = await db.genre.findMany({
+    const genres = await db.genre.findMany({
       orderBy: {
         name: 'asc',
       },
     });
 
-    return NextResponse.json(response, { status: 200 });
+    return NextResponse.json(genres, { status: 200 });
   } catch (error) {
     throw NextResponse.json(
       { message: 'Ошибка получения данных' },
