@@ -15,6 +15,12 @@ export type MovieDetailType = MovieType & {
   description: string;
 };
 
+export type MovieProductsType = {
+  name: string;
+  description: string;
+  price: number;
+};
+
 export type MovieGenreType = {
   id: number;
   name: string;

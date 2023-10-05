@@ -36,3 +36,12 @@ export const getAllCountries = async () => {
     throw 'Непредвиденная ошибка';
   }
 };
+
+export const getMovieProducts = async (id: number) => {
+  try {
+    const response = await axios.get(`api/movies/products/${id}`);
+    return response.data;
+  } catch (error) {
+    throw 'Непредвиденная ошибка';
+  }
+};
