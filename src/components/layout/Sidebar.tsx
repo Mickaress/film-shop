@@ -1,22 +1,18 @@
 'use client';
 
-import CheckboxWithSearch from '../CheckboxGroupWithSearch';
+import CheckboxWithSearch from '../GenreCheckboxGroup';
 import Input from '../ui/Input';
 import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 import { useGetAllGenresQuery } from '@/api/moviesApi/hooks/useGetAllGenresQuery';
 import { useGetAllCountriesQuery } from '@/api/moviesApi/hooks/useGetAllCountriesQuery';
+import GenreCheckboxGroup from '../GenreCheckboxGroup';
+import CountryCheckboxGroup from '../CountryCheckboxGroup';
 
 export default function Sidebar() {
   const setQueryParams = useSetQueryParams();
-  const { data: genreList } = useGetAllGenresQuery();
-  const { data: countryList } = useGetAllCountriesQuery();
 
   const handleChangeTitle = (value: string) => {
     setQueryParams({ title: value });
-  };
-
-  const handleChangeGenre = (id: number) => {
-    setQueryParams({ genre: id.toString() });
   };
 
   const handleChangeCountry = (id: number) => {
@@ -32,7 +28,7 @@ export default function Sidebar() {
   };
 
   return (
-    <>
+    <aside className="min-w-[300px] bg-white rounded-lg p-5">
       <p className="text-base bold font-bold">Название</p>
       <Input
         variant="text"
@@ -40,9 +36,9 @@ export default function Sidebar() {
         onChange={(event) => handleChangeTitle(event.target.value)}
       />
       <p className="text-base bold font-bold mt-5">Жанр</p>
-      <CheckboxWithSearch data={genreList} onChange={handleChangeGenre} />
+      <GenreCheckboxGroup />
       <p className="text-base bold font-bold mt-5">Страна</p>
-      <CheckboxWithSearch data={countryList} onChange={handleChangeCountry} />
+      <CountryCheckboxGroup />
       <p className="text-base bold font-bold mt-5">Годы</p>
       <div className="flex justify-between">
         <Input
@@ -57,6 +53,6 @@ export default function Sidebar() {
           onChange={(event) => handleChangeMaxYear(event.target.value)}
         />
       </div>
-    </>
+    </aside>
   );
 }
