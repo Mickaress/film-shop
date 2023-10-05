@@ -13,7 +13,7 @@ export const useSetQueryParams = () => {
     country = '',
     year_start = filter.year_start,
     year_end = filter.year_end,
-    page = filter.page,
+    page = '1',
   } = {}) => {
     const queryParams = new URLSearchParams();
 
