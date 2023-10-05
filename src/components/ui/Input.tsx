@@ -8,12 +8,12 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(
   ({ variant, error, ...props }, ref) => {
     const classNameMapper = {
-      text: 'w-full text-lg bg-gray rounded-lg outline-none p-2',
+      text: 'w-full text-lg bg-gray rounded-lg outline-none p-2 text-[20px] leading-none',
       number:
         'w-[110px] h-[23px] text-sm bg-darkgray text-white outline-none text-center rounded-full',
     };
     return (
-      <div className="">
+      <div>
         <input
           {...props}
           ref={ref}
