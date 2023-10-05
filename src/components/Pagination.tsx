@@ -36,9 +36,15 @@ const Pagination: FC<Props> = ({ pages, currentPage }) => {
 
   return (
     <div className="flex gap-8 items-center mt-5">
-      <ChevronLeft onClick={() => handlePageChange(currentPage - 1)} />
+      <ChevronLeft
+        className="cursor-pointer"
+        onClick={() => handlePageChange(currentPage - 1)}
+      />
       <div className="flex">{pagination}</div>
-      <ChevronRight onClick={() => handlePageChange(currentPage + 1)} />
+      <ChevronRight
+        className="cursor-pointer"
+        onClick={() => handlePageChange(currentPage + 1)}
+      />
     </div>
   );
 };
