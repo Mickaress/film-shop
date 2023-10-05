@@ -10,6 +10,15 @@ export const getFilteredFilms = async (filter: FilterType) => {
   }
 };
 
+export const getOneMovie = async (id: number) => {
+  try {
+    const response = await axios.get(`/api/movies/${id}`);
+    return response.data;
+  } catch (error) {
+    throw 'Непредвиденная ошибка';
+  }
+};
+
 export const getAllGenres = async () => {
   try {
     const response = await axios.get('api/movies/genres');
