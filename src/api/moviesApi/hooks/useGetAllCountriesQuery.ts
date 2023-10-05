@@ -4,7 +4,7 @@ import { getAllCountries } from '..';
 
 export const useGetAllCountriesQuery = () => {
   return useQuery<MovieCountryType[]>({
-    queryKey: ['genres'],
+    queryKey: ['countries'],
     queryFn: () => getAllCountries(),
   });
 };
