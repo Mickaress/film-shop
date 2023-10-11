@@ -25,7 +25,14 @@ export async function GET(request: Request, { params }: Props) {
             },
           },
         },
-        products: true,
+        products: {
+          select: {
+            id: true,
+            name: true,
+            description: true,
+            price: true,
+          },
+        },
         country: {
           select: {
             name: true,

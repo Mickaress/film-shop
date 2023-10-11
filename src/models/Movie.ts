@@ -13,9 +13,11 @@ export type MovieDetailType = MovieType & {
   country: string;
   genres: string[];
   description: string;
+  products: MovieProductsType[];
 };
 
 export type MovieProductsType = {
+  id: number;
   name: string;
   description: string;
   price: number;
