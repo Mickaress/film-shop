@@ -15,6 +15,7 @@ const ProductList: React.FC<ProductListProps> = ({ filmId }) => {
 
   const products = movie?.products;
   const pages = products ? Math.ceil(products.length / 3) : 1;
+  const pageProducts = products?.slice((page - 1) * 3, (page - 1) * 3 + 3);
 
   const handlePageChange = (page: number) => {
     if (page !== 0 && page <= pages) {
@@ -22,6 +23,7 @@ const ProductList: React.FC<ProductListProps> = ({ filmId }) => {
     }
   };
 
+  // TODO: добавить компонент загрузки
   if (isLoading) {
     return <>Загрузка</>;
   }
@@ -32,7 +34,7 @@ const ProductList: React.FC<ProductListProps> = ({ filmId }) => {
 
   return (
     <div className="flex flex-col gap-2">
-      {products?.map((product) => (
+      {pageProducts?.map((product) => (
         <ProductListItem product={product} key={product.id} />
       ))}
       <Pagination
