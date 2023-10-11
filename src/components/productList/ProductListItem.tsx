@@ -3,7 +3,7 @@
 import { MovieProductsType } from '@/models/Movie';
 import Image from 'next/image';
 import React from 'react';
-import Button from './ui/Button';
+import Button from '../ui/Button';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 

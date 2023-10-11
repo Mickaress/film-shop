@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from './Input';
 import Checkbox from './Checkbox';
 import Button from './Button';
-import LoadingCheckboxGroup from '../LoadingCheckboxGroup';
+import LoadingCheckboxGroup from '../loading/LoadingCheckboxGroup';
 
 type Props = {
   list: { id: number; name: string }[] | undefined;

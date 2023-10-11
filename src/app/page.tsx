@@ -1,4 +1,4 @@
-import MoviesList from '@/components/MoviesList';
+import MoviesList from '@/components/movieList/MoviesList';
 import Sidebar from '@/components/Sidebar';
 
 const Home = () => {

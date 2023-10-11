@@ -1,4 +1,4 @@
-import LinksGroup from '@/components/LinksGroup';
+import LinksGroup from '@/components/layout/LinksGroup';
 import Title from '@/components/Title';
 
 type Props = {

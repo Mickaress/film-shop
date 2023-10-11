@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import UserActions from './UserActions';
-import Container from '@/components/Container';
+import Container from '@/components/layout/Container';
 
 const Header = () => {
   return (

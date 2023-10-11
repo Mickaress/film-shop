@@ -3,7 +3,7 @@
 import { useGetOnedMovieQuery } from '@/api/moviesApi/hooks/useGetOneFilmQuery';
 import React, { useState } from 'react';
 import ProductListItem from './ProductListItem';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 
 type ProductListProps = {
   filmId: number;

@@ -1,7 +1,7 @@
 import { User } from 'lucide-react';
 import { getServerSession } from 'next-auth';
 import UserDropDownMenu from './UserDropDownMenu';
-import Button from './ui/Button';
+import Button from '../../ui/Button';
 import { authOptions } from '@/lib/auth';
 
 const UserActions = async () => {

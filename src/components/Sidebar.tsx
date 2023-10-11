@@ -1,7 +1,7 @@
-import GenreFilter from './GenreFilter';
-import CountryFilter from './CountryFilter';
-import YearRangeFilter from './YearRangeFilter';
-import TitleFilter from './TitleFilter';
+import GenreFilter from './filter/GenreFilter';
+import CountryFilter from './filter/CountryFilter';
+import YearRangeFilter from './filter/YearRangeFilter';
+import TitleFilter from './filter/TitleFilter';
 
 export default function Sidebar() {
   return (

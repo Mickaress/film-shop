@@ -1,9 +1,9 @@
 'use client';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 import { useGetFilter } from '@/hooks/useGetFilter';
 import MoviesListItem from './MoviesListItem';
 import { useGetFilteredMoviesQuery } from '@/api/moviesApi/hooks/useGetFilteredMoviesQuery';
-import LoadingMoviesList from './LoadingMoviesList';
+import LoadingMoviesList from '../loading/LoadingMoviesList';
 import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 
 const MoviesList = () => {

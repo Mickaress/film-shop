@@ -3,7 +3,7 @@
 import { useGetFilter } from '@/hooks/useGetFilter';
 import { useGetAllCountriesQuery } from '@/api/moviesApi/hooks/useGetAllCountriesQuery';
 import { useSetQueryParams } from '@/hooks/useSetQueryParams';
-import CheckboxGroupWithSearch from './ui/CheckboxGroupWithSearch';
+import CheckboxGroupWithSearch from '../ui/CheckboxGroupWithSearch';
 
 const CountryFilter = () => {
   const { data: countryList, isLoading } = useGetAllCountriesQuery();

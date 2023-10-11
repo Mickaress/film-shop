@@ -1,5 +1,5 @@
 import MovieInfo from '@/components/MovieInfo';
-import ProductList from '@/components/ProductList';
+import ProductList from '@/components/productList/ProductList';
 import React from 'react';
 import { FC } from 'react';
 

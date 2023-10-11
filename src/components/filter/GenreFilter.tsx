@@ -3,7 +3,7 @@
 import { useGetFilter } from '@/hooks/useGetFilter';
 import { useGetAllGenresQuery } from '@/api/moviesApi/hooks/useGetAllGenresQuery';
 import { useSetQueryParams } from '@/hooks/useSetQueryParams';
-import CheckboxGroupWithSearch from './ui/CheckboxGroupWithSearch';
+import CheckboxGroupWithSearch from '../ui/CheckboxGroupWithSearch';
 
 const GenreFilter = () => {
   const { data: genreList, isLoading } = useGetAllGenresQuery();

@@ -2,7 +2,7 @@
 import { signOut } from 'next-auth/react';
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import Button from './ui/Button';
+import Button from '../../ui/Button';
 
 const UserDropDownMenu = () => {
   const [isOpen, SetIsOpen] = useState(false);
