@@ -4,7 +4,6 @@ import { useGetOnedMovieQuery } from '@/api/moviesApi/hooks/useGetOneFilmQuery';
 import Image from 'next/image';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { ClipLoader } from 'react-spinners';
 
 interface Props {
   id: number;
