@@ -19,7 +19,11 @@ const MovieInfo: React.FC<Props> = ({ id }) => {
       {isLoading ? (
         <Skeleton width={350} height={400} />
       ) : (
-        <Image src={poster} alt="Постер" className="w-[350px] rounded-xl" />
+        <Image
+          src={poster}
+          alt="Постер"
+          className="max-w-[350px]  max-h-[500px] rounded-xl"
+        />
       )}
       <div className="flex flex-col gap-5 w-full">
         <div className="flex gap-5">
