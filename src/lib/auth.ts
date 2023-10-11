@@ -30,6 +30,13 @@ export const authOptions: NextAuthOptions = {
         }
         const existingUser = await db.user.findUnique({
           where: { email: credentials?.email },
+          include: {
+            role: {
+              select: {
+                name: true,
+              },
+            },
+          },
         });
         if (!existingUser) {
           throw new Error('Такого пользователя не существует');
@@ -46,8 +53,9 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: `${existingUser.id}`,
-          userId: `${existingUser.id}`,
           email: existingUser.email,
+          userId: `${existingUser.id}`,
+          role: `${existingUser.role.name}`,
         };
       },
     }),
@@ -58,6 +66,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           userId: user.userId,
+          role: user.role,
         };
       }
       return token;
@@ -68,6 +77,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           userId: token.userId,
+          role: token.role,
         },
       };
     },
