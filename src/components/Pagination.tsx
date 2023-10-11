@@ -1,15 +1,14 @@
 'use client';
-import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 import { FC } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Props {
   pages: number;
   currentPage: number;
+  handlePageChange: (page: number) => void;
 }
 
-const Pagination: FC<Props> = ({ pages, currentPage }) => {
-  const setQueryParams = useSetQueryParams();
+const Pagination: FC<Props> = ({ pages, currentPage, handlePageChange }) => {
   const pagination = [];
   for (let i = 1; i <= pages; i++) {
     pagination.push(
@@ -21,16 +20,10 @@ const Pagination: FC<Props> = ({ pages, currentPage }) => {
         onClick={() => handlePageChange(i)}
         disabled={i === currentPage}
       >
-        <p className="text-sm">{i}</p>
+        <p className="text-[14px]">{i}</p>
       </button>,
     );
   }
-
-  const handlePageChange = (page: number) => {
-    if (page !== 0 && page <= pages) {
-      setQueryParams({ page: page.toString() });
-    }
-  };
 
   if (pages < 2) return;
 
