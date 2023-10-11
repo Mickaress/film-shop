@@ -1,4 +1,4 @@
-import { User } from 'lucide-react';
+import { ShoppingBasket, User } from 'lucide-react';
 import { getServerSession } from 'next-auth';
 import UserDropDownMenu from './UserDropDownMenu';
 import Button from '../../ui/Button';
@@ -8,6 +8,12 @@ const UserActions = async () => {
   const session = await getServerSession(authOptions);
   return (
     <div className="flex items-center gap-1">
+      <Button variant="text" href="/cart" className="mr-3">
+        <ShoppingBasket
+          size={40}
+          className="hover:bg-blue hover:stroke-white rounded-lg p-1"
+        />
+      </Button>
       <User size={32} />
       {session ? (
         <div className="flex items-center gap-1">

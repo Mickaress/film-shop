@@ -4,21 +4,18 @@ import { MovieProductsType } from '@/models/Movie';
 import Image from 'next/image';
 import React from 'react';
 import Button from '../ui/Button';
-import { useSession } from 'next-auth/react';
-import { toast } from 'react-toastify';
+import { useAddCartProductMutation } from '@/api/cartApi/hooks/useAddCartProductMutation';
 
 type ProductListItemProps = {
   product: MovieProductsType;
 };
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
-  const { data: session } = useSession();
+  const { mutate: addCartProduct } = useAddCartProductMutation();
   const image = require(`@/api/static/productsImages/${product.id}.png`);
 
   const handleAddToCart = () => {
-    if (!session) {
-      toast.error('Вы не авторизованы');
-    }
+    addCartProduct(product.id);
   };
 
   return (
