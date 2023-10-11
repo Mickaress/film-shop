@@ -14,7 +14,7 @@ const MovieInfo: React.FC<Props> = ({ id }) => {
   const poster = require(`@/api/static/moviesPosters/${id}.png`);
 
   return (
-    <div className="p-5 w-full flex gap-5">
+    <div className="w-full flex gap-5">
       {isLoading ? (
         <Skeleton width={350} height={400} />
       ) : (

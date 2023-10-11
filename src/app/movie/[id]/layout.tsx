@@ -26,7 +26,7 @@ const Layout: React.FC<Props> = ({ children, params }) => {
     <>
       <Title id={filmId} />
       <LinksGroup links={links} />
-      <div className="bg-white w-full h-[550px] rounded-bl-xl rounded-br-xl rounded-tr-xl">
+      <div className="bg-white w-full h-[550px] rounded-bl-xl rounded-br-xl rounded-tr-xl p-5">
         {children}
       </div>
     </>
