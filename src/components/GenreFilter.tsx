@@ -6,7 +6,7 @@ import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 import CheckboxGroupWithSearch from './ui/CheckboxGroupWithSearch';
 
 const GenreFilter = () => {
-  const { data: genreList } = useGetAllGenresQuery();
+  const { data: genreList, isLoading } = useGetAllGenresQuery();
 
   const filter = useGetFilter();
   const checkedGenreList = filter.genre;
@@ -21,6 +21,7 @@ const GenreFilter = () => {
       list={genreList}
       checkedList={checkedGenreList}
       handleChange={handleChangeGenre}
+      isLoading={isLoading}
     />
   );
 };

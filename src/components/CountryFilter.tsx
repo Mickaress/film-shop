@@ -6,7 +6,7 @@ import { useSetQueryParams } from '@/hooks/useSetQueryParams';
 import CheckboxGroupWithSearch from './ui/CheckboxGroupWithSearch';
 
 const CountryFilter = () => {
-  const { data: countryList } = useGetAllCountriesQuery();
+  const { data: countryList, isLoading } = useGetAllCountriesQuery();
 
   const filter = useGetFilter();
   const checkedList = filter.country;
@@ -21,6 +21,7 @@ const CountryFilter = () => {
       list={countryList}
       checkedList={checkedList}
       handleChange={handleChangeCountry}
+      isLoading={isLoading}
     />
   );
 };
