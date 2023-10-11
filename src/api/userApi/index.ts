@@ -6,8 +6,7 @@ export const signUp = async (data: SignUpType) => {
     return await axios.post('api/auth/register', data);
   } catch (error) {
     if (isAxiosError(error)) {
-      const err = error;
-      throw err.response?.data.error;
+      throw error.response?.data.error;
     }
     throw 'Непредвиденная ошибка';
   }
