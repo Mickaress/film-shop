@@ -54,7 +54,7 @@ const SignInForm = () => {
           error={errors.password?.message}
           {...register('password')}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="button" type="submit">
           Войти
         </Button>
       </form>
