@@ -10,9 +10,10 @@ const config: Config = {
     colors: {
       white: '#ffffff',
       black: '#000000',
-      gray: '#f2f2f2',
+      lightgray: '#f2f2f2',
+      gray: '#a4a4a4',
       blue: '#3d68ed',
-      darkgray: '#3F4E65',
+      darkgray: '#383838',
       red: '#e24c4c',
     },
     extend: {
