@@ -33,12 +33,68 @@ export async function GET() {
           },
         },
       },
+      orderBy: {
+        id: 'desc',
+      },
     });
 
     return NextResponse.json(cartProducts, { status: 200 });
   } catch (error) {
     throw NextResponse.json(
       { message: 'Непредвиденная ошибка' },
+      { status: 500 },
+    );
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return NextResponse.json(
+        { error: 'Вы не авторизованы' },
+        { status: 401 },
+      );
+    }
+
+    const body = await request.json();
+    const productId = parseInt(body);
+
+    const userId = parseInt(session.user.userId);
+    const cart = await db.cart.findUnique({
+      where: { userId: userId },
+    });
+
+    const existingCartProduct = await db.cartProduct.findFirst({
+      where: {
+        cartId: cart!.id,
+        productId: productId,
+      },
+    });
+
+    if (existingCartProduct) {
+      return NextResponse.json(
+        { error: 'Предмет уже в корзине' },
+        { status: 409 },
+      );
+    }
+
+    await db.cartProduct.create({
+      data: {
+        cartId: cart!.id,
+        productId: productId,
+        quantity: 1,
+      },
+    });
+
+    return NextResponse.json(
+      { message: 'Товар добавлен в корзину' },
+      { status: 201 },
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Ошибка получения данных' },
       { status: 500 },
     );
   }

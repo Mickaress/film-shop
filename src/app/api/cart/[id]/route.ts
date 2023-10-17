@@ -9,7 +9,7 @@ type Props = {
   };
 };
 
-export async function POST(request: Request, { params }: Props) {
+export async function PATCH(request: Request, { params }: Props) {
   try {
     const session = await getServerSession(authOptions);
 
@@ -21,40 +21,30 @@ export async function POST(request: Request, { params }: Props) {
     }
 
     const { id } = params;
-    const productId = parseInt(id);
+    const cartProductId = parseInt(id);
+    const body = await request.json();
+    const quantity = body;
 
     const userId = parseInt(session.user.userId);
     const cart = await db.cart.findUnique({
       where: { userId: userId },
     });
 
-    if (cart) {
-      const existingCartProduct = await db.cartProduct.findFirst({
+    const cartProduct = await db.cartProduct.findUnique({
+      where: { id: cartProductId, cartId: cart?.id },
+    });
+
+    if (cartProduct) {
+      await db.cartProduct.update({
         where: {
-          cartId: cart.id,
-          productId: productId,
+          id: cartProductId,
         },
-      });
-
-      if (existingCartProduct) {
-        return NextResponse.json(
-          { error: 'Предмет уже в корзине' },
-          { status: 409 },
-        );
-      }
-
-      await db.cartProduct.create({
         data: {
-          cartId: cart.id,
-          productId: productId,
-          quantity: 1,
+          quantity: quantity,
         },
       });
 
-      return NextResponse.json(
-        { message: 'Товар добавлен в корзину' },
-        { status: 201 },
-      );
+      return NextResponse.json({ message: 'Товар обновлен' }, { status: 201 });
     }
   } catch (error) {
     return NextResponse.json(
@@ -76,17 +66,21 @@ export async function DELETE(request: Request, { params }: Props) {
     }
 
     const { id } = params;
-    const dataId = parseInt(id);
+    const cartProductId = parseInt(id);
 
     const userId = parseInt(session.user.userId);
     const cart = await db.cart.findUnique({
       where: { userId: userId },
     });
 
-    if (cart) {
+    const cartProduct = await db.cartProduct.findUnique({
+      where: { id: cartProductId, cartId: cart?.id },
+    });
+
+    if (cartProduct) {
       await db.cartProduct.delete({
         where: {
-          id: dataId,
+          id: cartProductId,
         },
       });
 
