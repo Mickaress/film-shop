@@ -1,19 +1,18 @@
 'use client';
 
-import { useGetOnedMovieQuery } from '@/api/moviesApi/hooks/useGetOneFilmQuery';
 import React, { useState } from 'react';
 import ProductListItem from './ProductListItem';
 import Pagination from '../Pagination';
+import { useGetMovieProductsQuery } from '@/api/moviesApi/hooks/useGetMovieProductsQuery';
 
 type ProductListProps = {
   filmId: number;
 };
 
 const ProductList: React.FC<ProductListProps> = ({ filmId }) => {
-  const { data: movie, isLoading } = useGetOnedMovieQuery(filmId);
+  const { data: products, isLoading } = useGetMovieProductsQuery(filmId);
   const [page, setPage] = useState(1);
 
-  const products = movie?.products;
   const pages = products ? Math.ceil(products.length / 3) : 1;
   const pageProducts = products?.slice((page - 1) * 3, (page - 1) * 3 + 3);
 
@@ -35,7 +34,7 @@ const ProductList: React.FC<ProductListProps> = ({ filmId }) => {
   return (
     <div className="flex flex-col gap-2">
       {pageProducts?.map((product) => (
-        <ProductListItem product={product} key={product.id} />
+        <ProductListItem key={product.id} product={product} movieId={filmId} />
       ))}
       <Pagination
         currentPage={page}
