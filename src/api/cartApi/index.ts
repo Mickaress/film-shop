@@ -11,7 +11,22 @@ export const getCartProducts = async () => {
 
 export const addCartProduct = async (productId: number) => {
   try {
-    const response = await axios.post(`/api/cart/${productId}`);
+    const response = await axios.post('/api/cart', productId);
+    return response.data;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error.response?.data.error;
+    }
+    throw 'Непредвиденная ошибка';
+  }
+};
+
+export const updateCartProduct = async (
+  cartProductId: number,
+  quantity: number,
+) => {
+  try {
+    const response = await axios.patch(`/api/cart/${cartProductId}`, quantity);
     return response.data;
   } catch (error) {
     if (isAxiosError(error)) {
