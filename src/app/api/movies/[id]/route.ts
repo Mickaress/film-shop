@@ -1,5 +1,5 @@
 import { db } from '@/lib/db';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 type Props = {
   params: {
@@ -7,7 +7,7 @@ type Props = {
   };
 };
 
-export async function GET(request: Request, { params }: Props) {
+export async function GET(request: NextRequest, { params }: Props) {
   try {
     const { id } = params;
 

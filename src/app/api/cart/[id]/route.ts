@@ -1,7 +1,7 @@
 import { authOptions } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { getServerSession } from 'next-auth';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 type Props = {
   params: {
@@ -9,7 +9,7 @@ type Props = {
   };
 };
 
-export async function PATCH(request: Request, { params }: Props) {
+export async function PATCH(request: NextRequest, { params }: Props) {
   try {
     const session = await getServerSession(authOptions);
 
@@ -54,7 +54,7 @@ export async function PATCH(request: Request, { params }: Props) {
   }
 }
 
-export async function DELETE(request: Request, { params }: Props) {
+export async function DELETE(request: NextRequest, { params }: Props) {
   try {
     const session = await getServerSession(authOptions);
 

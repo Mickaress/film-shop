@@ -1,11 +1,11 @@
 import { db } from '@/lib/db';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { titleFilter } from '@/utils/query/moviesQuery';
 import { genreFilter } from '@/utils/query/moviesQuery';
 import { countryFilter } from '@/utils/query/moviesQuery';
 import { yearFilter } from '@/utils/query/moviesQuery';
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
     const searchParams = new URLSearchParams(request.url.split('?')[1]);
     const title = searchParams.get('title')!;
