@@ -7,7 +7,7 @@
     @apply text-darkgray text-[20px] outline-none box-border leading-none duration-300;
   }
   body {
-    @apply bg-gray;
+    @apply bg-lightgray;
   }
   input[type='number']::-webkit-outer-spin-button,
   input[type='number']::-webkit-inner-spin-button,
