@@ -9,6 +9,7 @@ type Props = {
   checkedList: string[];
   handleChange: (id: number) => void;
   isLoading: boolean;
+  disabled: boolean;
 };
 
 const CheckboxGroupWithSearch: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const CheckboxGroupWithSearch: React.FC<Props> = ({
   checkedList,
   handleChange,
   isLoading,
+  disabled,
 }) => {
   const [search, setSearch] = useState('');
   const [showAll, setShowAll] = useState(false);
@@ -45,6 +47,7 @@ const CheckboxGroupWithSearch: React.FC<Props> = ({
               name={item.name}
               checked={checkedList.includes(item.id.toString())}
               onChange={() => handleChange(item.id)}
+              disabled={disabled}
             />
           ))}
         </div>
@@ -52,7 +55,7 @@ const CheckboxGroupWithSearch: React.FC<Props> = ({
       {filteredCheckbox && filteredCheckbox?.length > 3 && (
         <Button
           variant="text"
-          className="text-[16px]"
+          className="text-[16px] text-darkgray"
           onClick={() => setShowAll(!showAll)}
         >
           {showAll ? 'Скрыть \u25B2' : 'Показать все \u25BC'}
