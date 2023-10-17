@@ -1,7 +1,7 @@
-import { MovieProductsType } from './Movie';
+import { MovieProductType } from './Movie';
 
 export type CartProductType = {
   id: number;
-  product: MovieProductsType;
+  product: MovieProductType;
   quantity: number;
 };
