@@ -1,20 +1,13 @@
-import { FC } from 'react';
+import { FC, InputHTMLAttributes } from 'react';
 
-interface Props {
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
-  checked: boolean;
-  onChange: () => void;
-}
+};
 
-const Checkbox: FC<Props> = ({ name, checked, onChange }) => {
+const Checkbox: FC<Props> = ({ name, ...props }) => {
   return (
     <div className="flex gap-2">
-      <input
-        type="checkbox"
-        className="cursor-pointer"
-        defaultChecked={checked}
-        onChange={onChange}
-      />
+      <input type="checkbox" className="cursor-pointer" {...props} />
       <label>{name}</label>
     </div>
   );
