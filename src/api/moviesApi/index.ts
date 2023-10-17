@@ -10,9 +10,9 @@ export const getFilteredFilms = async (filter: FilterType) => {
   }
 };
 
-export const getOneMovie = async (id: number) => {
+export const getOneMovie = async (movieId: number) => {
   try {
-    const response = await axios.get(`/api/movies/${id}`);
+    const response = await axios.get(`/api/movies/${movieId}`);
     return response.data;
   } catch (error) {
     throw 'Непредвиденная ошибка';
@@ -31,6 +31,15 @@ export const getAllGenres = async () => {
 export const getAllCountries = async () => {
   try {
     const response = await axios.get('api/movies/countries');
+    return response.data;
+  } catch (error) {
+    throw 'Непредвиденная ошибка';
+  }
+};
+
+export const getMovieProducts = async (movieId: number) => {
+  try {
+    const response = await axios.get(`/api/movies/${movieId}/products`);
     return response.data;
   } catch (error) {
     throw 'Непредвиденная ошибка';
