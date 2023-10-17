@@ -2,11 +2,10 @@ import Link from 'next/link';
 import React, { ButtonHTMLAttributes } from 'react';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant: 'text' | 'contained';
+  variant: 'text' | 'button';
   href?: string;
   children: React.ReactNode;
   className?: string;
-  onClick?: () => void;
 };
 
 const Button: React.FC<Props> = ({
@@ -14,26 +13,36 @@ const Button: React.FC<Props> = ({
   href,
   children,
   className,
-  onClick,
+  disabled,
   ...props
 }) => {
   const classNameMapper = {
-    text: 'hover:text-blue hover:underline',
-    contained:
+    text: 'text-blue hover:underline',
+    button:
       'text-white py-2 px-5 bg-blue border border-blue rounded-lg hover:text-blue hover:bg-white',
   };
 
+  const classNameDisabledMapper = {
+    text: 'text-gray',
+    button: 'text-white py-2 px-5 bg-gray rounded-lg',
+  };
+
+  const classNameCombination = `${
+    disabled ? classNameDisabledMapper[variant] : classNameMapper[variant]
+  } ${className}`;
+
   if (href) {
     return (
-      <Link href={href} className={`${classNameMapper[variant]} ${className}`}>
+      <Link href={href} className={`${classNameCombination}`}>
         {children}
       </Link>
     );
   }
+
   return (
     <button
-      onClick={onClick}
-      className={`${classNameMapper[variant]} ${className}`}
+      className={`${classNameCombination}`}
+      disabled={disabled}
       {...props}
     >
       {children}
