@@ -4,9 +4,9 @@ import { useGetOnedMovieQuery } from '@/api/moviesApi/hooks/useGetOneFilmQuery';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
-interface Props {
+type Props = {
   id: number;
-}
+};
 
 const Title: React.FC<Props> = ({ id }) => {
   const { data, isLoading } = useGetOnedMovieQuery(id);

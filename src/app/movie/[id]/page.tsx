@@ -2,11 +2,11 @@ import MovieInfo from '@/components/MovieInfo';
 import React from 'react';
 import { FC } from 'react';
 
-interface Props {
+type Props = {
   params: {
     id: string;
   };
-}
+};
 
 const page: FC<Props> = ({ params: { id } }) => {
   const filmId = parseInt(id);

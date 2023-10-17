@@ -1,17 +1,17 @@
 'use client';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { FC, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { FC } from 'react';
 import React from 'react';
 
-interface Props {
+type Props = {
   links: Link[];
-}
+};
 
-interface Link {
+type Link = {
   title: string;
   path: string;
-}
+};
 
 const LinksGroup: FC<Props> = ({ links }) => {
   const currentPathname = usePathname();

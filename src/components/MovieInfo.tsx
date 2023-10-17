@@ -5,9 +5,9 @@ import Image from 'next/image';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
-interface Props {
+type Props = {
   id: number;
-}
+};
 
 const MovieInfo: React.FC<Props> = ({ id }) => {
   const { data, isLoading } = useGetOnedMovieQuery(id);
@@ -22,6 +22,7 @@ const MovieInfo: React.FC<Props> = ({ id }) => {
           src={poster}
           alt="Постер"
           className="max-w-[350px]  max-h-[500px] rounded-xl"
+          priority
         />
       )}
       <div className="flex flex-col gap-5 w-full">
