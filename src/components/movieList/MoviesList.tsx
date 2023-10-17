@@ -17,9 +17,7 @@ const MoviesList = () => {
   const currentPage = parseInt(filter.page);
 
   const handlePageChange = (page: number) => {
-    if (page !== 0 && page <= pages) {
-      setQueryParams({ page: page.toString() });
-    }
+    setQueryParams({ page: page.toString() });
   };
 
   return (
