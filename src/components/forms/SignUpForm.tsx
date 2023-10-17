@@ -65,13 +65,13 @@ const SignUpForm = () => {
           error={errors.address?.message}
           {...register('address')}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="button" type="submit">
           Зарегистрироваться
         </Button>
       </form>
       <p className="text-center mt-3">
         Есть аккаунт?{' '}
-        <Button variant="text" href="/sign-in" className="text-blue">
+        <Button variant="text" href="/sign-in">
           Войдите
         </Button>
       </p>
