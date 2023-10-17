@@ -47,6 +47,7 @@ model CartProduct {
 model Order {
   id            Int            @id @default(autoincrement())
   userId        Int
+  amount        Int
   shippingCode  String?
   user          User           @relation(fields: [userId], references: [id])
   OrderProducts OrderProduct[]
