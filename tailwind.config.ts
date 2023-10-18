@@ -15,6 +15,7 @@ const config: Config = {
       blue: '#3d68ed',
       darkgray: '#383838',
       red: '#e24c4c',
+      orange: '#ffa500',
     },
     extend: {
       boxShadow: {

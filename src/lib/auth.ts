@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error(JSON.stringify({ message: 'Абоба' }));
+          throw new Error('Пустые поля');
         }
         const existingUser = await db.user.findUnique({
           where: { email: credentials?.email },

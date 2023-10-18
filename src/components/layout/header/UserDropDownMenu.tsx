@@ -22,7 +22,7 @@ const UserDropDownMenu = () => {
       >
         <Button
           variant="text"
-          href="/sign-in"
+          href="/profile"
           className="p-3 border-b-[0.5px] border-black/25"
         >
           Профиль

@@ -39,3 +39,29 @@ export const signUpSchema = z.object({
 });
 
 export type SignUpType = z.infer<typeof signUpSchema>;
+
+export const profileInfoSchema = z.object({
+  fullName: z.string().refine(
+    (value) => {
+      const fullNamePattern = /^[а-яА-ЯёЁ]+\s[а-яА-ЯёЁ]+(\s[а-яА-ЯёЁ]+)?$/;
+
+      return fullNamePattern.test(value);
+    },
+    {
+      message: 'Некорректное ФИО',
+    },
+  ),
+  phone: z.string().refine(
+    (value) => {
+      const phonePattern = /^\+7\d{10}$/;
+
+      return phonePattern.test(value);
+    },
+    {
+      message: 'Некорректный формат: +7xxxxxxxxxx',
+    },
+  ),
+  address: z.string().nonempty('Пустое поле'),
+});
+
+export type ProfileInfoType = z.infer<typeof profileInfoSchema>;

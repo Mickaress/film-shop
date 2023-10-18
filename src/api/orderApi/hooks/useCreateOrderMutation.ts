@@ -1,23 +1,24 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { addCartProduct } from '..';
+import { createOrder } from '..';
 
-export const useAddCartProductMutation = () => {
+export const useCreateOrderMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (productId: number) => addCartProduct(productId),
+    mutationFn: () => createOrder(),
     onMutate: () => {
-      toast.loading('Добавление товара в корзину');
+      queryClient.setQueryData(['cart'], []);
+      toast.loading('Создание заказа');
     },
     onSuccess: async (res) => {
-      await queryClient.invalidateQueries(['products']);
+      await queryClient.invalidateQueries(['cart']);
       toast.dismiss();
       const message = res.message;
       toast.success(message);
     },
     onError: async (error) => {
-      await queryClient.invalidateQueries(['products']);
+      await queryClient.invalidateQueries(['cart']);
       toast.dismiss();
       if (typeof error === 'string') {
         toast.error(error);

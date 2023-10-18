@@ -31,7 +31,6 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
       }
       return { ...prevMovieProduct };
     });
-    console.log(newMovieProducts);
     queryClient.setQueryData(['products', movieId], newMovieProducts);
     addCartProduct(product.id);
   };
