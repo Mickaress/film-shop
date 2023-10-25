@@ -19,6 +19,24 @@ export const getOneMovie = async (movieId: number) => {
   }
 };
 
+export const getMovieStatictics = async (
+  movieId: number,
+  startDate: string,
+  endDate: string,
+) => {
+  try {
+    const response = await axios.get(`/api/movies/${movieId}/statistics`, {
+      params: {
+        startDate: startDate,
+        endDate: endDate,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw 'Непредвиденная ошибка';
+  }
+};
+
 export const getAllGenres = async () => {
   try {
     const response = await axios.get('api/movies/genres');

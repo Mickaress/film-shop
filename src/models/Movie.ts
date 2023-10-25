@@ -24,6 +24,11 @@ export type MovieProductType = {
   isInCart: boolean;
 };
 
+export type MovieStaticticsType = {
+  name: string;
+  amount: number;
+};
+
 export type MovieGenreType = {
   id: number;
   name: string;

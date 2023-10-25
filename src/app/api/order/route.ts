@@ -14,20 +14,35 @@ export async function GET() {
       );
     }
 
-    const userId = parseInt(session.user.userId);
-    const orderList = await db.order.findMany({
-      where: { userId: userId },
-      select: {
-        id: true,
-        amount: true,
-        shippingCode: true,
-      },
-    });
+    if (session.user.role === 'user') {
+      const userId = parseInt(session.user.userId);
+      const orderList = await db.order.findMany({
+        where: { userId: userId },
+        select: {
+          id: true,
+          amount: true,
+          shippingCode: true,
+        },
+      });
 
-    return NextResponse.json(orderList, { status: 200 });
+      return NextResponse.json(orderList, { status: 200 });
+    }
+
+    if (session.user.role === 'admin') {
+      const orderList = await db.order.findMany({
+        where: { shippingCode: null },
+        select: {
+          id: true,
+          amount: true,
+          shippingCode: true,
+        },
+      });
+
+      return NextResponse.json(orderList, { status: 200 });
+    }
   } catch (error) {
     return NextResponse.json(
-      { message: 'Непредвиденная ошибка' },
+      { error: 'Непредвиденная ошибка' },
       { status: 500 },
     );
   }

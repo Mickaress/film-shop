@@ -49,6 +49,7 @@ model Order {
   userId        Int
   amount        Int
   shippingCode  String?
+  date          DateTime @default(now())
   user          User           @relation(fields: [userId], references: [id])
   OrderProducts OrderProduct[]
 }

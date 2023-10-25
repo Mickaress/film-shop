@@ -28,7 +28,8 @@ const SignInForm = () => {
     if (signInData?.error) {
       toast.error(signInData.error);
     } else {
-      router.replace('/');
+      router.push('/');
+      router.refresh();
     }
   };
 

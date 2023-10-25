@@ -19,7 +19,7 @@ const MoviesListItem: FC<Props> = ({ id, title }) => {
         priority
       />
       <div className="absolute top-0 left-0 w-[150px] h-[230px] rounded-lg bg-black/50 opacity-0 hover:opacity-100 cursor-pointer flex items-center">
-        <p className="text-white opacity-100 text-xl w-[150px] text-center">
+        <p className="text-white opacity-100 text-[18px] w-[150px] text-center">
           {title}
         </p>
       </div>

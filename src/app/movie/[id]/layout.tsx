@@ -20,6 +20,10 @@ const Layout: React.FC<Props> = ({ children, params }) => {
       title: 'Предметы',
       path: `/movie/${filmId}/products`,
     },
+    {
+      title: 'Статистика',
+      path: `/movie/${filmId}/statistics`,
+    },
   ];
 
   return (

@@ -87,7 +87,7 @@ export async function GET(request: NextRequest, { params }: Props) {
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: Props) {
+export async function PATCH(request: NextRequest, { params }: Props) {
   try {
     const session = await getServerSession(authOptions);
 
@@ -98,23 +98,25 @@ export async function DELETE(request: NextRequest, { params }: Props) {
       );
     }
 
-    const { id } = params;
-    const dataId = parseInt(id);
+    if (session.user.role !== 'admin') {
+      return NextResponse.json({ error: 'Вы не админ' }, { status: 401 });
+    }
 
-    const userId = parseInt(session.user.userId);
-    const cart = await db.cart.findUnique({
-      where: { userId: userId },
+    const { id } = params;
+    const orderId = parseInt(id);
+    const body = await request.json();
+    const { shippingCode } = body;
+
+    await db.order.update({
+      where: {
+        id: orderId,
+      },
+      data: {
+        shippingCode: shippingCode,
+      },
     });
 
-    if (cart) {
-      await db.cartProduct.delete({
-        where: {
-          id: dataId,
-        },
-      });
-
-      return NextResponse.json({ message: 'Товар удалён' }, { status: 201 });
-    }
+    return NextResponse.json({ message: 'Код добавлен' }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { error: 'Ошибка получения данных' },

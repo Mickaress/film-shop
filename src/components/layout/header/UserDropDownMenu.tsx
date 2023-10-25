@@ -27,7 +27,16 @@ const UserDropDownMenu = () => {
         >
           Профиль
         </Button>
-        <Button variant="text" onClick={() => signOut()} className="p-3">
+        <Button
+          variant="text"
+          onClick={() => {
+            signOut({
+              redirect: true,
+              callbackUrl: `${window.location.origin}/`,
+            });
+          }}
+          className="p-3"
+        >
           Выйти
         </Button>
       </div>

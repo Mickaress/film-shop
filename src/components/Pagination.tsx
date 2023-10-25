@@ -19,6 +19,7 @@ const Pagination: FC<Props> = ({ pages, currentPage, handlePageChange }) => {
         className={`${
           i === currentPage && 'bg-blue/50'
         } rounded-full w-9 h-9 text-darkgray hover:no-underline hover:bg-blue/50`}
+        onClick={() => handlePageChange(i)}
         disabled={i === currentPage}
       >
         {i}

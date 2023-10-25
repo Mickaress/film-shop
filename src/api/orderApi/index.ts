@@ -29,3 +29,20 @@ export const createOrder = async () => {
     throw 'Непредвиденная ошибка';
   }
 };
+
+export const addShippingCode = async (
+  orderId: number,
+  shippingCode: string,
+) => {
+  try {
+    const response = await axios.patch(`/api/order/${orderId}`, {
+      shippingCode: shippingCode,
+    });
+    return response.data;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error.response?.data;
+    }
+    throw 'Непредвиденная ошибка';
+  }
+};
