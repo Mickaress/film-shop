@@ -52,7 +52,7 @@ const SignUpForm = () => {
           {...register('fullName')}
         />
         <Input
-          type="number"
+          type="text"
           placeholder="+7xxxxxxxxxx"
           variant="text"
           error={errors.phone?.message}
